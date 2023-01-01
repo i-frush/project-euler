@@ -13,9 +13,12 @@ def replacen(n, d):
 
 
 def check(l, n):
-    return sum(1 for i in l if sympy.isprime(i)) == n\
-        if len(str(l[0])) != len(str(l[1])) else\
-           sum(1 for i in range(1, 10) if sympy.isprime(l[i])) == n
+    if len(str(l[0])) != len(str(l[1])):
+        # print([1 for i in range(1, 10) if sympy.isprime(l[i]) ])
+        return sum(1 for i in range(1, 10) if sympy.isprime(l[i])) == n
+    else:
+        # print([1 for i in range(0, 10) if sympy.isprime(l[i]) ])
+        return sum(1 for i in range(0, 10) if sympy.isprime(l[i])) == n
 
 
 n = 10
@@ -25,7 +28,7 @@ while flag:
         print('-', n)
     for i in range(0, 10):
         l = replacen(n, i)
-        if check(l, 6):
+        if check(l, 8):
             print(n, l)
             flag = False
             break
